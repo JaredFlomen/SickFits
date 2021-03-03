@@ -5,7 +5,7 @@
 ### Front-End
 * React
 * Next.js
-* Apollo Client
+* Apollo Client & GraphQL
 
 ### Backend
 * Keystone.js
