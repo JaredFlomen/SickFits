@@ -8,6 +8,6 @@
 * Apollo Client & GraphQL
 
 ### Backend
-* Keystone.js
+* Keystone.js, provides GraphQL API for CRUD
 * Node
 * MongoDB
