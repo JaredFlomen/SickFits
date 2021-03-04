@@ -13,4 +13,4 @@
 * MongoDB
 
 
-[Stack](https://github.com/JaredFlomen/SickFits/blob/main/docs/Stack.png?raw=true)
+![Stack](https://github.com/JaredFlomen/SickFits/blob/main/docs/Stack.png?raw=true)
