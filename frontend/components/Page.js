@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function Page({ children }) {
   return (
     <div>
@@ -6,3 +8,7 @@ export default function Page({ children }) {
     </div>
   );
 }
+
+Page.propTypes = {
+  children: PropTypes.any,
+};
