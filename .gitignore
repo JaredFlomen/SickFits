@@ -75,3 +75,10 @@ typings/
 
 # FuseBox cache
 .fusebox/
+backend/.keystone/admin/pages/_app.js
+backend/.keystone/admin/pages/_app.js
+backend/.keystone/admin/pages/_app.js
+backend/.keystone/admin/pages/no-access.js
+backend/.keystone/schema-types.ts
+backend/.keystone/schema.graphql
+backend/.keystone/admin/pages/_app.js
