@@ -1,5 +1,6 @@
-import 'dotenv/config';
+import { User } from './schemas/User';
 import { config, createSchema } from '@keystone-next/keystone/schema';
+import 'dotenv/config';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
 
@@ -21,6 +22,7 @@ export default config({
     //Todo: add data seeding
   },
   lists: createSchema({
+    User,
     //Schema items go here
   }),
   ui: {
