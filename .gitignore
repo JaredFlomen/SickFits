@@ -81,3 +81,6 @@ backend/.keystone/schema-types.ts
 backend/.keystone/schema.graphql
 backend/.keystone/admin/pages/_app.js
 backend/.keystone/*
+.keystone
+
+.DS_Store
