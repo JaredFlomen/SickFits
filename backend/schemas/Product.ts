@@ -23,7 +23,7 @@ export const Product = list({
         createView: { fieldMode: 'hidden' },
       }
     }),
-    price: integer();
+    price: integer(),
     //Todo: Photo
   },
 });
