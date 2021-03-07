@@ -18,6 +18,10 @@ export const Product = list({
         { label: 'Unvailable', value: 'UNAVAILABLE' },
       ],
       defaultValue: 'DRAFT',
+      ui: {
+        displayMode: 'segmented-control',
+        createView: { fieldMode: 'hidden' },
+      }
     }),
   },
 });
