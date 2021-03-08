@@ -4,6 +4,11 @@ export default function formatMoney(amount = 0) {
     currency: 'USD',
     minimumFractionDigits: 2,
   };
+
+  // Checks if it's a clean dollar amount
+  if (amount % 100 === 0) {
+    options.minimumFractionDigits = 0;
+  }
   const formatter = Intl.NumberFormat('en-US', options);
 
   return formatter.format(amount / 100);
