@@ -24,7 +24,7 @@ const UPDATE_PRODUCT_MUTATION = gql`
   ) {
     updateProduct(
       id: $id
-      data: { id: $id, name: $name, description: $description, price: $price }
+      data: { name: $name, description: $description, price: $price }
     ) {
       id
       name
@@ -56,7 +56,9 @@ export default function UpdateProduct({ id }) {
         const res = await updateProduct({
           variables: {
             id,
-            data: inputs,
+            name: inputs.name,
+            description: inputs.description,
+            price: inputs.price,
           },
         });
         // Submit the input fields to backend
