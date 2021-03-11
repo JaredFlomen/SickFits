@@ -39,23 +39,26 @@ export default function UpdateProduct({ id }) {
   const { data, error, loading } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: { id },
   });
-  if (loading) return <p>Loading...</p>;
+
   const [
     updateProduct,
     { data: updateData, error: updateError, loading: updateLoading },
-  ] = useMutation(UPDATE_PRODUCT_MUTATION, {
-    variables: {
-      id,
-    },
-  });
+  ] = useMutation(UPDATE_PRODUCT_MUTATION);
 
   // State for form inputs
-  const { inputs, handleChange, clearForm, resetForm } = useForm(data.Product);
+  const { inputs, handleChange, clearForm, resetForm } = useForm(data?.Product);
 
+  if (loading) return <p>Loading...</p>;
   return (
     <Form
       onSubmit={async (e) => {
         e.preventDefault();
+        const res = await updateProduct({
+          variables: {
+            id,
+            data: inputs,
+          },
+        });
         // Submit the input fields to backend
         // const res = await createProduct();
         // clearForm();
