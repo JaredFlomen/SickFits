@@ -25,10 +25,17 @@ export default function Pagination({ page }) {
       <Head>
         <title>Sick Fits - Page {page} of</title>
       </Head>
-      <Link href="/">← Prev</Link>
-      <p>Page x of {pageCount} </p>
+      <Link href={`/products/${page - 1}`}>
+        {/* Have to nest an A tag to pass props through Link tag */}
+        <a aria-disabled={page <= 1}> ← Prev</a>
+      </Link>
+      <p>
+        Page {page} of {pageCount}
+      </p>
       <p>{count} Items Total</p>
-      <Link href="/">Next →</Link>
+      <Link href={`/products/${page + 1}`}>
+        <a aria-disabled={page >= pageCount}>Next →</a>
+      </Link>
     </PaginationStyles>
   );
 }
