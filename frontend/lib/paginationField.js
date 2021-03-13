@@ -13,6 +13,10 @@ export default function paginationField() {
       const pages = Math.ceil(count / first);
       // Check if we have existing items
       const items = existing.slice(skip, skip + first).filter((x) => x);
+      // If there are items, and there aren't enough items to satisfy how many were requested, and we are on the last page, THEN, send items
+      if (items.length && items.length !== first && page === pages) {
+        return items;
+      }
       if (items.length !== first) {
         // We don't have any items, we must go to the network to fetch them
         return false;
