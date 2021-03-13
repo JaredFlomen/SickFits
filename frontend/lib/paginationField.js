@@ -27,8 +27,17 @@ export default function paginationField() {
       // Fallback to network
       return false;
     },
-    merge() {
+    merge(existing, incoming, { args }) {
+      const { skip, first } = args;
       // Runs when the apollo client comes back from the network with the products
+      console.log(
+        `Merging items from the networking: ${incoming.length} items`
+      );
+      const merged = existing ? existing.slice(0) : [];
+      for (let i = skip; i < skip + incoming.length; i + 1) {
+        merged[i] = incoming[i - skip];
+      }
+      return merged;
     },
   };
 }
