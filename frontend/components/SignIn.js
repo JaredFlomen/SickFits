@@ -30,6 +30,9 @@ export default function SignIn() {
   });
   async function handleSubmit(e) {
     e.preventDefault();
+    const res = await signin();
+    console.log(res);
+    resetForm();
     // Send the email and password to the graphQL API
   }
   return (
