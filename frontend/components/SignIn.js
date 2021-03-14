@@ -16,6 +16,8 @@ export default function SignIn() {
             name="email"
             placeholder="Email Address"
             autoComplete="email"
+            value={inputs.email}
+            onChange={handleChange}
           />
         </label>
         <label htmlFor="password">
@@ -25,6 +27,8 @@ export default function SignIn() {
             name="password"
             placeholder="Password"
             autoComplete="password"
+            value={inputs.password}
+            onChange={handleChange}
           />
           <button type="submit">Sign In</button>
         </label>
