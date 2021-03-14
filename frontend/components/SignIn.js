@@ -13,6 +13,16 @@ export default function SignIn() {
             autoComplete="email"
           />
         </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            autoComplete="password"
+          />
+          <button type="submit">Sign In</button>
+        </label>
       </fieldset>
     </Form>
   );
