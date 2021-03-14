@@ -6,11 +6,13 @@ import { CURRENT_USER_QUERY } from './User';
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
-    ... on UserAuthenticationWithPasswordSuccess {
-      item {
-        id
-        email
-        name
+    authenticateUserWithPassword(email: $email, password: $password) {
+      ... on UserAuthenticationWithPasswordSuccess {
+        item {
+          id
+          email
+          name
+        }
       }
     }
   }
@@ -26,10 +28,10 @@ export default function SignIn() {
     // Refetch the currently logged in user
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     // Send the email and password to the graphQL API
-  };
+  }
   return (
     <Form method="post" onSubmit={handleSubmit}>
       <h2>Sign Into Your Account</h2>
