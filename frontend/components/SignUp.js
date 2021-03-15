@@ -25,7 +25,7 @@ export default function SignUp() {
     password: '',
     name: '',
   });
-  const [signup, { data, loading }] = useMutation(SIGNUP_MUTATION, {
+  const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
     variables: inputs,
     // Refetch the currently logged in user
     // refetchQueries: [{ query: CURRENT_USER_QUERY }],
@@ -37,11 +37,6 @@ export default function SignUp() {
     resetForm();
     // Send the email and password to the graphQL API
   }
-  const error =
-    data?.authenticateUserWithPassword.__typename ===
-    'UserAuthenticationWithPasswordFailure'
-      ? data?.authenticateUserWithPassword
-      : undefined;
   return (
     <Form method="post" onSubmit={handleSubmit}>
       <h2>Sign Up For An Account</h2>
