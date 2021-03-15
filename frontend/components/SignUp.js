@@ -5,20 +5,16 @@ import useForm from '../lib/useForm';
 import { CURRENT_USER_QUERY } from './User';
 import DisplayError from './ErrorMessage';
 
-const SIGNIN_MUTATION = gql`
-  mutation SIGNIN_MUTATION($email: String!, $password: String!) {
-    authenticateUserWithPassword(email: $email, password: $password) {
-      ... on UserAuthenticationWithPasswordSuccess {
-        item {
-          id
-          email
-          name
-        }
-      }
-      ... on UserAuthenticationWithPasswordFailure {
-        code
-        message
-      }
+const SIGNUP_MUTATION = gql`
+  mutation SIGNUP_MUTATION(
+    $email: String!
+    $password: String!
+    $name: String!
+  ) {
+    createUser(data: { email: $email, name: $name, password: $password }) {
+      id
+      email
+      name
     }
   }
 `;
@@ -27,8 +23,9 @@ export default function SignUp() {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
     password: '',
+    name: '',
   });
-  const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
+  const [signin, { data, loading }] = useMutation(SIGNUP_MUTATION, {
     variables: inputs,
     // Refetch the currently logged in user
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
@@ -47,9 +44,20 @@ export default function SignUp() {
       : undefined;
   return (
     <Form method="post" onSubmit={handleSubmit}>
-      <h2>Sign Into Your Account</h2>
+      <h2>Sign Up For An Account</h2>
       <DisplayError error={error} />
       <fieldset>
+        <label htmlFor="name">
+          Your Name
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            autoComplete="name"
+            value={inputs.name}
+            onChange={handleChange}
+          />
+        </label>
         <label htmlFor="email">
           Email
           <input
