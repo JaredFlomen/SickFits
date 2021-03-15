@@ -25,14 +25,14 @@ export default function SignUp() {
     password: '',
     name: '',
   });
-  const [signin, { data, loading }] = useMutation(SIGNUP_MUTATION, {
+  const [signup, { data, loading }] = useMutation(SIGNUP_MUTATION, {
     variables: inputs,
     // Refetch the currently logged in user
-    refetchQueries: [{ query: CURRENT_USER_QUERY }],
+    // refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await signin();
+    const res = await signup();
     console.log(res);
     resetForm();
     // Send the email and password to the graphQL API
