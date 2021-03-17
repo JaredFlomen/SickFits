@@ -6,12 +6,12 @@ export const CartItem = list({
     listView: {
       initialColumns: ['product', 'quantity', 'user']
     }
-  }
+  },
   fields: {
-    //Todo: custom label
+    // TODO: Custom Label in here
     quantity: integer({
       defaultValue: 1,
-      isRequired: true
+      isRequired: true,
     }),
     product: relationship({ ref: 'Product' }),
     user: relationship({ ref: 'User.cart' }),
