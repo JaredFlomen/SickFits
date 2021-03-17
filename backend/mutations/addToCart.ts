@@ -11,7 +11,8 @@ async function addToCart(root: any, { productId }: { productId: string }, contex
   }
   //Query the current users cart
   const allCartItems = await context.lists.CartItem.findMany({
-    where: { user: { id: sesh.itemId }, product: { id: productId } }
+    where: { user: { id: sesh.itemId }, product: { id: productId } },
+    resolveField: 'id,quantity'
   });
   const [existingCartItem] = allCartItems;
   //See if item is already in cart
