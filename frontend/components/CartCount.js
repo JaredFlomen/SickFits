@@ -8,6 +8,8 @@ const Dot = styled.div`
   line-height: 2rem;
   min-width: 3rem;
   margin-left: 1rem;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
 `;
 function CartCount({ count }) {
   return <Dot>{count}</Dot>;
