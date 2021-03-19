@@ -61,6 +61,7 @@ function Search() {
         pathname: `/product/${selectedItem.id}`,
       });
     },
+    itemToString: item => item?.name || '',
   });
   return (
     <SearchStyles>
