@@ -1,6 +1,7 @@
 import { resetIdCounter, useCombobox } from 'downshift';
 import { useLazyQuery } from '@apollo/client';
 import gql from 'graphql-tag';
+import debounce from 'lodash.debounce';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_PRODUCTS_QUERY = gql`
@@ -31,11 +32,14 @@ function Search() {
       fetchPolicy: 'no-cache',
     }
   );
+  const findItemsButChill = debounce(findItems, 350);
   resetIdCounter();
   const { getMenuProps, getInputProps, getComboboxProps } = useCombobox({
     items: [],
     // Fire when someone type into the box
-    onInputValueChange() {},
+    onInputValueChange() {
+      findItemsButChill();
+    },
     // Fire when someone select from the dropdown
     onSelectedItemChange() {},
   });
