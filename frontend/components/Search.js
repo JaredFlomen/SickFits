@@ -32,6 +32,7 @@ function Search() {
       fetchPolicy: 'no-cache',
     }
   );
+  const items = data?.searchTerms || [];
   const findItemsButChill = debounce(findItems, 350);
   resetIdCounter();
   const {
@@ -65,7 +66,9 @@ function Search() {
         />
       </div>
       <DropDown {...getMenuProps()}>
-        <DropDownItem>Hey</DropDownItem>
+        {items.map(item => (
+          <DropDownItem>{item.name}</DropDownItem>
+        ))}
       </DropDown>
     </SearchStyles>
   );
