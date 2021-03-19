@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav';
 import Cart from './Cart';
+import Search from './Search';
 
 const Logo = styled.h1`
   background: red;
@@ -36,14 +37,14 @@ const HeaderStyles = styled.header`
 export default function Header() {
   return (
     <HeaderStyles>
-      <div className="bar">
+      <div className='bar'>
         <Logo>
-          <Link href="/">Sick fits</Link>
+          <Link href='/'>Sick fits</Link>
         </Logo>
         <Nav />
       </div>
-      <div className="sub-bar">
-        <p>Search</p>
+      <div className='sub-bar'>
+        <Search />
       </div>
       <Cart />
     </HeaderStyles>
