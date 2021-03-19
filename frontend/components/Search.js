@@ -61,13 +61,20 @@ function Search() {
             type: 'search',
             placeholder: 'Search for an item',
             id: 'search',
-            className: 'loading',
+            className: loading ? 'loading' : '',
           })}
         />
       </div>
       <DropDown {...getMenuProps()}>
         {items.map(item => (
-          <DropDownItem>{item.name}</DropDownItem>
+          <DropDownItem>
+            <img
+              src={item.photo.image.publicUrlTransformed}
+              alt={item.name}
+              width='50'
+            />
+            {item.name}
+          </DropDownItem>
         ))}
       </DropDown>
     </SearchStyles>
