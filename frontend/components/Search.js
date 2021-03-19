@@ -40,8 +40,10 @@ function Search() {
     getMenuProps,
     getInputProps,
     getComboboxProps,
+    getItemProps,
+    highlightedIndex,
   } = useCombobox({
-    items: [],
+    items,
     // Fire when someone type into the box
     onInputValueChange() {
       findItemsButChill({
@@ -66,8 +68,12 @@ function Search() {
         />
       </div>
       <DropDown {...getMenuProps()}>
-        {items.map(item => (
-          <DropDownItem>
+        {items.map((item, index) => (
+          <DropDownItem
+            key={item.id}
+            {...getItemProps({ item })}
+            highlighted={index === highlightedIndex}
+          >
             <img
               src={item.photo.image.publicUrlTransformed}
               alt={item.name}
