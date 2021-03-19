@@ -1,4 +1,5 @@
 import { resetIdCounter, useCombobox } from 'downshift';
+import { useLazyQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
@@ -24,6 +25,12 @@ const SEARCH_PRODUCTS_QUERY = gql`
 `;
 
 function Search() {
+  const [findItems, { loading, data, error }] = useLazyQuery(
+    SEARCH_PRODUCTS_QUERY,
+    {
+      fetchPolicy: 'no-cache',
+    }
+  );
   resetIdCounter();
   const { getMenuProps, getInputProps, getComboboxProps } = useCombobox({
     items: [],
