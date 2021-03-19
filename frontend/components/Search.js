@@ -34,11 +34,20 @@ function Search() {
   );
   const findItemsButChill = debounce(findItems, 350);
   resetIdCounter();
-  const { getMenuProps, getInputProps, getComboboxProps } = useCombobox({
+  const {
+    inputValue,
+    getMenuProps,
+    getInputProps,
+    getComboboxProps,
+  } = useCombobox({
     items: [],
     // Fire when someone type into the box
     onInputValueChange() {
-      findItemsButChill();
+      findItemsButChill({
+        variables: {
+          searchTerm: inputValue,
+        },
+      });
     },
     // Fire when someone select from the dropdown
     onSelectedItemChange() {},
