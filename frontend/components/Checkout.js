@@ -17,6 +17,13 @@ const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 function Checkout() {
   function handleSubmit(e) {
     e.preventDefault();
+    // Start page transition, turn loader on
+    // Create payment method via stripe, token comes back if successful
+    // Handle any errors from stripe (cc not accepted, declined, etc)
+    // Send token to our keystone server via a custom mutation
+    // Change the page to view the order
+    // Close the cart
+    // Turn the loader off
   }
   return (
     <Elements stripe={stripeLib}>
