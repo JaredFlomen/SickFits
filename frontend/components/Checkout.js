@@ -45,6 +45,8 @@ function CheckoutForm() {
     // Change the page to view the order
     // Close the cart
     // Turn the loader off
+    setLoading(false);
+    nProgress.done();
   }
   return (
     <CheckoutFormStyles onSubmit={handleSubmit}>
