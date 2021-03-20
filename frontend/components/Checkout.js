@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { loadStripe } from '@stripe/stripe-js';
-import { CardElement, Elements } from '@stripe/react-stripe-js';
+import { CardElement, Elements, useStripe } from '@stripe/react-stripe-js';
+import { useState } from 'react';
 import SickButton from './styles/SickButton';
 
 const CheckoutFormStyles = styled.form`
@@ -14,7 +15,10 @@ const CheckoutFormStyles = styled.form`
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
-function Checkout() {
+function CheckoutForm() {
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const stripe = useStripe();
   function handleSubmit(e) {
     e.preventDefault();
     // Start page transition, turn loader on
@@ -35,4 +39,12 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+function Checkout() {
+  return (
+    <Elements stripe={stripeLib}>
+      <CheckoutForm />
+    </Elements>
+  );
+}
+
+export { Checkout };
