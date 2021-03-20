@@ -36,6 +36,7 @@ function CheckoutForm() {
       type: 'card',
       card: elements.getElement(CardElement),
     });
+    console.log(paymentMethod);
     // Handle any errors from stripe (cc not accepted, declined, etc)
     // Send token to our keystone server via a custom mutation
     // Change the page to view the order
