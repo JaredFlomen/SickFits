@@ -38,18 +38,20 @@ function CheckoutForm() {
     });
     console.log(paymentMethod);
     // Handle any errors from stripe (cc not accepted, declined, etc)
+    if (error) {
+      setError(error);
+    }
     // Send token to our keystone server via a custom mutation
     // Change the page to view the order
     // Close the cart
     // Turn the loader off
   }
   return (
-    <Elements stripe={stripeLib}>
-      <CheckoutFormStyles onSubmit={handleSubmit}>
-        <CardElement />
-        <SickButton>Checkout</SickButton>
-      </CheckoutFormStyles>
-    </Elements>
+    <CheckoutFormStyles onSubmit={handleSubmit}>
+      {error && <p>{error.message}</p>}
+      <CardElement />
+      <SickButton>Checkout</SickButton>
+    </CheckoutFormStyles>
   );
 }
 
