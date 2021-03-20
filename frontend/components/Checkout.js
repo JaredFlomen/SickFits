@@ -15,9 +15,12 @@ const CheckoutFormStyles = styled.form`
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 function Checkout() {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return (
     <Elements stripe={stripeLib}>
-      <CheckoutFormStyles>
+      <CheckoutFormStyles onSubmit={handleSubmit}>
         <CardElement />
         <SickButton>Checkout</SickButton>
       </CheckoutFormStyles>
