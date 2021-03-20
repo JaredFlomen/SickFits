@@ -84,3 +84,4 @@ backend/.keystone/*
 .keystone
 
 .DS_Store
+frontend/.env.local
