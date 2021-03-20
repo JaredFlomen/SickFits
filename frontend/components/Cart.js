@@ -7,6 +7,7 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
 import CloseButton from './styles/CloseButton';
 import RemoveFromCart from './RemoveFromCart';
+import Checkout from './Checkout';
 
 const CartItemStyles = styled.li`
   padding: 1 rem 0;
@@ -28,7 +29,7 @@ function CartItem({ cartItem }) {
   return (
     <CartItemStyles>
       <img
-        width="100"
+        width='100'
         src={product.photo.image.publicUrlTransformed}
         alt={product.name}
       />
@@ -57,12 +58,13 @@ function Cart() {
         <CloseButton onClick={closeCart}>&times;</CloseButton>
       </header>
       <ul>
-        {me.cart.map((cartItem) => (
+        {me.cart.map(cartItem => (
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </ul>
       <footer>
         <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+        <Checkout />
       </footer>
     </CartStyles>
   );
