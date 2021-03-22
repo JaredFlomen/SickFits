@@ -63,6 +63,11 @@ function CheckoutForm() {
       return; // Stops the checkout from happening
     }
     // Send token to our keystone server via a custom mutation
+    const order = await checkout({
+      variables: {
+        token: paymentMethod.id,
+      },
+    });
     // Change the page to view the order
     // Close the cart
     // Turn the loader off
