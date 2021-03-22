@@ -59,6 +59,8 @@ function CheckoutForm() {
     // Handle any errors from stripe (cc not accepted, declined, etc)
     if (error) {
       setError(error);
+      nProgress.done();
+      return; // Stops the checkout from happening
     }
     // Send token to our keystone server via a custom mutation
     // Change the page to view the order
