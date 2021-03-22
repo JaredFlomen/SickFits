@@ -8,6 +8,7 @@ import {
 } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 import nProgress from 'nprogress';
+import gql from 'graphql-tag';
 import SickButton from './styles/SickButton';
 
 const CheckoutFormStyles = styled.form`
@@ -17,6 +18,20 @@ const CheckoutFormStyles = styled.form`
   padding: 1rem;
   display: grid;
   grid-gap: 1rem;
+`;
+
+const CREATE_ORDER_MUTATION = gql`
+  mutation CREATE_ORDER_MUTATION($token: String!) {
+    checkout(token: $token) {
+      id
+      charge
+      total
+      items {
+        id
+        name
+      }
+    }
+  }
 `;
 
 const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
