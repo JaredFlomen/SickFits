@@ -71,11 +71,19 @@ async function checkout(
       price: cartItem.product.price,
       quantity: cartItem.quantity,
       image: { connect: { id: cartItem.product.photo.id } },
-      user: { connect: {id: userId} }
+      user: { connect: { id: userId } }
     }
     return orderItem;
-  })
+  });
   // Create the order and return it
+  const order = await context.lists.Order.createOne({
+    data: {
+      total: charge.amount,
+      charge: charge.id,
+      items: { create: orderItems },
+      user: { connect: { id: userId } },
+    }
+  });
 }
 
 export default checkout;
