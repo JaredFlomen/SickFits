@@ -64,6 +64,17 @@ async function checkout(
     throw new Error(err.message);
   });
   // Convert the cartItems to OrderItems
+  const orderItems = cartItems.map(cartItem => {
+    const orderItem = {
+      name: cartItem.product.name,
+      description: cartItem.product.description,
+      price: cartItem.product.price,
+      quantity: cartItem.quantity,
+      image: { connect: { id: cartItem.product.photo.id } },
+      user: { connect: {id: userId} }
+    }
+    return orderItem;
+  })
   // Create the order and return it
 }
 
