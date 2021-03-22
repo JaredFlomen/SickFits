@@ -9,6 +9,7 @@ import {
 import { useState } from 'react';
 import nProgress from 'nprogress';
 import gql from 'graphql-tag';
+import { useMutation } from '@apollo/client';
 import SickButton from './styles/SickButton';
 
 const CheckoutFormStyles = styled.form`
@@ -41,6 +42,9 @@ function CheckoutForm() {
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const [checkout, { error: graphQLError }] = useMutation(
+    CREATE_ORDER_MUTATION
+  );
   async function handleSubmit(e) {
     e.preventDefault();
     // Start page transition, turn loader on
