@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useCart } from '../lib/cartState';
 import CartCount from './CartCount';
-import SignOut from './Signout';
+import SignOut from './SignOut';
 import NavStyles from './styles/NavStyles';
 import { useUser } from './User';
 
@@ -10,14 +10,14 @@ export default function Nav() {
   const openCart = useCart();
   return (
     <NavStyles>
-      <Link href="/products">Products</Link>
+      <Link href='/products'>Products</Link>
       {user && (
         <>
-          <Link href="/sell">Sell</Link>
-          <Link href="/orders">Orders</Link>
-          <Link href="/account">Account</Link>
+          <Link href='/sell'>Sell</Link>
+          <Link href='/orders'>Orders</Link>
+          <Link href='/account'>Account</Link>
           <SignOut />
-          <button type="button" onClick={openCart}>
+          <button type='button' onClick={openCart}>
             My Cart
             <CartCount
               count={user.cart.reduce(
@@ -30,7 +30,7 @@ export default function Nav() {
       )}
       {!user && (
         <>
-          <Link href="/signin">Sign In</Link>
+          <Link href='/signin'>Sign In</Link>
         </>
       )}
     </NavStyles>
