@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
@@ -26,5 +27,8 @@ const SINGLE_ORDER_QUERY = gql`
 `;
 
 export default function SingleOrderPage({ query }) {
+  const { data, error, loading } = useQuery(SINGLE_ORDER_QUERY, {
+    variables: { id: query.id },
+  });
   return <div>Hey</div>;
 }
