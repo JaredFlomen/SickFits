@@ -10,6 +10,7 @@ import { useState } from 'react';
 import nProgress from 'nprogress';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
+import Router from 'next/router';
 import SickButton from './styles/SickButton';
 
 const CheckoutFormStyles = styled.form`
@@ -42,6 +43,7 @@ function CheckoutForm() {
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
   const [checkout, { error: graphQLError }] = useMutation(
     CREATE_ORDER_MUTATION
   );
@@ -69,6 +71,10 @@ function CheckoutForm() {
       },
     });
     // Change the page to view the order
+    router.push({
+      pathname: '/order',
+      query: { id: order.data.checkout.id },
+    });
     // Close the cart
     // Turn the loader off
     setLoading(false);
