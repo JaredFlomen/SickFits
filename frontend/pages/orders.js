@@ -57,14 +57,25 @@ export default function OrdersPage() {
         {allOrders.map(order => (
           <OrderItemStyles>
             <Link href={`/order/${order.id}`}>
-              <div className='order-meta'>
-                <p>{countItemsInAnOrder(order)} Items</p>
-                <p>
-                  {order.items.length} Product
-                  {order.items.length === 1 ? '' : 's'}
-                </p>
-                <p>{formatMoney(order.total)}</p>
-              </div>
+              <>
+                <div className='order-meta'>
+                  <p>{countItemsInAnOrder(order)} Items</p>
+                  <p>
+                    {order.items.length} Product
+                    {order.items.length === 1 ? '' : 's'}
+                  </p>
+                  <p>{formatMoney(order.total)}</p>
+                </div>
+                <div className='images'>
+                  {order.items.map(item => (
+                    <img
+                      key={item.id}
+                      src={item.photo?.image?.publicUrlTransformed}
+                      alt={item.name}
+                    />
+                  ))}
+                </div>
+              </>
             </Link>
           </OrderItemStyles>
         ))}
