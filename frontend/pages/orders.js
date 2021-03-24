@@ -58,7 +58,7 @@ export default function OrdersPage() {
           <OrderItemStyles>
             <Link href={`/order/${order.id}`}>
               <div className='order-meta'>
-                <p />
+                <p>{countItemsInAnOrder(order)} Items</p>
                 <p>{formatMoney(order.total)}</p>
               </div>
             </Link>
