@@ -38,6 +38,10 @@ const OrderUl = styled.ul`
   grid-gap: 4rem;
 `;
 
+function countItemsInAnOrder(order) {
+  return order.items.reduce((tally, item) => tally + item.quantity, 0);
+}
+
 export default function OrdersPage() {
   const { data, error, loading } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading</p>;
@@ -54,6 +58,7 @@ export default function OrdersPage() {
           <OrderItemStyles>
             <Link href={`/order/${order.id}`}>
               <div className='order-meta'>
+                <p />
                 <p>{formatMoney(order.total)}</p>
               </div>
             </Link>
