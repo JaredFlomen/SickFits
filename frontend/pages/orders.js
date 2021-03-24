@@ -45,6 +45,9 @@ export default function OrdersPage() {
   const { allOrders } = data;
   return (
     <div>
+      <Head>
+        <title>Your Orders ({allOrders.length})</title>
+      </Head>
       <h2>You have {allOrders.length} orders!</h2>
       <OrderUl>
         {allOrders.map(order => (
