@@ -6,7 +6,7 @@ import OrderStyles from '../components/styles/OrderStyles';
 import formatMoney from '../lib/formatMoney';
 
 const USER_ORDERS_QUERY = gql`
-  query USER_ORDERS_QUERY($id: ID!) {
+  query USER_ORDERS_QUERY {
     allOrders {
       id
       charge
@@ -35,5 +35,5 @@ export default function OrdersPage() {
   if (loading) return <p>Loading</p>;
   if (error) return <ErrorMessage error={error} />;
   const { allOrders } = data;
-  return ();
+  return <div>{allOrders.length}</div>;
 }
