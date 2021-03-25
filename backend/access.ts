@@ -15,7 +15,7 @@ const generatedPermissions = Object.fromEntries(permissionsList.map(permission =
   }
 ]));
 
-
+//Permissions check if someone meets a critera, yes or no
 export const permissions = {
   ...generatedPermissions,
 }
