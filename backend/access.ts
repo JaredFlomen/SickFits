@@ -1,6 +1,8 @@
 // Simplest, it's a yes or no depending on session
 
-export function isSignedIn({ session }) {
+import { ListAccessArgs } from './types';
+
+export function isSignedIn({ session }: ListAccessArgs) {
   //If session is undefined (double !!) will return false (not signed in)
   return !!session;
 }
