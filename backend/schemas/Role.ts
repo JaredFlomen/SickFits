@@ -4,12 +4,14 @@ import { permissions } from '../access';
 import { permissionFields } from './fields';
 
 export const Role = list({
+  //Limiting access
   access: {
     create: permissions.canManageRoles,
     read: permissions.canManageRoles,
     update: permissions.canManageRoles,
     delete: permissions.canManageRoles,
   },
+  //Hiding UI
   ui: {
     hideCreate: args => !permissions.canManageRoles(args),
     hideDelete: args => !permissions.canManageRoles(args),
