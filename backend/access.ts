@@ -19,3 +19,16 @@ const generatedPermissions = Object.fromEntries(permissionsList.map(permission =
 export const permissions = {
   ...generatedPermissions,
 }
+
+//Rule based functions
+//Rules can return a boolean or a filter which limits which products they can CRUD
+export const rules = {
+  canManageproducts({session}: ListAccessArgs) {
+    //Do they have the permission of canManageProducts
+    if (permissions.canManageProducts({ session })) {
+      return true;
+    }
+    //If not, do they own this item?
+    return { user: { id: session.itemId } };
+  },
+}
