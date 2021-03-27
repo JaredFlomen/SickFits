@@ -38,5 +38,13 @@ export const rules = {
     }
     //They should see only available products based on status false
     return { status: 'AVAILABLE' }
-  }
+  },
+  canOrder({ session }: ListAccessArgs) {
+    //Do they have the permission of canManageCart
+    if (permissions.canManageCart({ session })) {
+      return true;
+    }
+    //If not, do they own this item?
+    return { user: { id: session.itemId } };
+  },
 }
