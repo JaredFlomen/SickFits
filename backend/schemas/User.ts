@@ -11,7 +11,9 @@ export const User = list({
     //You can't delete yourself
     delete: permissions.canManageUsers,
   },
-  // ui
+  ui: {
+    hideCreate: args => !permissions.canManageUsers(args),
+  },
   fields: {
     name: text({ isRequired: true }),
     email: text({ isRequired: true, isUnique: true }),
