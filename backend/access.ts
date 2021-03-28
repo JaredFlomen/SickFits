@@ -66,6 +66,6 @@ export const rules = {
       return true;
     }
     //Otherwise they may only update themselves
-    return { user: { id: session.itemId } };
+    return { id: session.itemId  };
   },
 }
