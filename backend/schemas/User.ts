@@ -13,6 +13,7 @@ export const User = list({
   },
   ui: {
     hideCreate: args => !permissions.canManageUsers(args),
+    hideDelete: args => !permissions.canManageUsers(args),
   },
   fields: {
     name: text({ isRequired: true }),
